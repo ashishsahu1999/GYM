@@ -1,0 +1,97 @@
+.footer {
+  background-color: #000000; /* Matches body background color */
+  color: #ffffff; /* White text color */
+  text-align: center;
+  padding: 200px 0; /* Adjust padding to control height */
+  margin: 0; /* Remove margin if it’s pushing the footer away */
+  width: 100%; /* Ensure it takes the full width */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px; /* Optional: Control maximum width */
+  margin: 0 auto; /* Center content */
+}
+
+.logo-text {
+  color: #FF1414; /* Red color for the logo text to match the design scheme */
+}
+
+.footer-section h1, 
+.footer-section h2 {
+  color: #FF1414; /* Red color for headings */
+}
+
+.list {
+  color: #ffffff; /* White color for list items */
+}
+
+.footer-section {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in the element’s total width and height */
+}
+
+.footer-section h1, 
+.footer-section h2 {
+  margin-bottom: 15px;
+  font-size: 1.5em; /* Adjusted font size for headers */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0; /* Remove default padding */
+}
+
+.footer-section.links ul {
+  margin: 0; /* Remove default margin */
+}
+
+.footer-section ul li {
+  margin: 5px 0; /* Small margin between items */
+}
+
+.footer-section a {
+  color: #ffffff; /* White color for links */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.footer-section a:hover {
+  text-decoration: underline; /* Underline on hover */
+  color: #FF1414; /* Change color on hover for visibility */
+}
+
+.footer-section p {
+  font-size: 1em; /* Adjusted font size for paragraphs */
+  line-height: 1.5; /* Improved readability with line height */
+}
+
+.footer-section .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Gap between social icons */
+}
+
+.footer-section .social-icons a {
+  display: inline-block;
+}
+
+.footer-section .social-icon {
+  width: 35px;
+  height: 35px;
+  transition: transform 0.3s;
+  border-radius: 50%; /* Adds border radius to make icons circular */
+}
+
+.footer-section .social-icon:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 0.9em; /* Adjusted font size for footer bottom text */
+  color: #ffffff; /* White color for footer bottom text */
+}

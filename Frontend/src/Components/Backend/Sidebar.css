@@ -1,0 +1,79 @@
+/* Sidebar.css */
+
+.toggleIcon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.Sidebarmn {
+  background-color: #001529;
+  color: white;
+  flex: 1;
+  transition: all 0.3s ease;
+  margin-top: 50px;
+}
+
+.Sidebarmn.closed {
+  width: 80px; /* Adjust width for closed state */
+}
+
+.Sidebarmn.open {
+  width: 250px; /* Adjust width for open state */
+}
+
+.Sidebarmn ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Sidebarmn li {
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.Sidebarmn li:hover {
+  background-color: #1890ff; /* Change color on hover */
+}
+
+.site-layout {
+  background: #fff;
+  padding: 20px;
+}
+
+.site-layout-background {
+  background: #f0f2f5;
+}
+
+.logo {
+  font-size: 1.5em;
+  color: white;
+  padding: 16px;
+  text-align: center;
+}
+
+.company_dashboard_card {
+  width: 200px;
+  text-align: center;
+  background: #f0f2f5;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 16px;
+  transition: transform 0.3s;
+}
+
+.company_dashboard_card:hover {
+  transform: scale(1.05); /* Scale on hover */
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 10px 0;
+}
