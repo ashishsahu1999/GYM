@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -8,22 +8,31 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // Check if the user is already logged in
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      // If a token exists, redirect to the sidebar or any protected route
+      navigate('/sidebar');
+    }
+  }, [navigate]);
+
   const handleLogin = async (event) => {
     event.preventDefault();
     setError('');
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/api/login/',
+        'http://127.0.0.1:8000/api/login/', 
         { username, password },
         { headers: { 'Content-Type': 'application/json' } }
       );
 
       if (response.status === 200) {
-        // Store the token in localStorage
+        // Store the token in localStorage after successful login
         localStorage.setItem('token', response.data.token);
         alert('Login successful!');
-        navigate('/sidebar');
+        navigate('/sidebar'); // Redirect to sidebar or any protected route after login
       }
     } catch (error) {
       setError(error.response?.data?.msg || error.message || 'Login failed');
