@@ -58,21 +58,9 @@ input {
   z-index: -1;
 }
 
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-/* Navbar Styles */
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   position: fixed;
   left: 0;
@@ -81,13 +69,12 @@ nav {
   z-index: 1;
   background-color: transparent;
   transition: 0.6s ease-in-out;
-  padding: 10px 20px;
 }
 
 nav .logo {
-  margin-left: 20px; 
-  font-size: 1.5rem;
-  color: #ffffff;
+  margin-left: 20px; /* Add your desired margin */
+  font-size: 1.5rem; /* Adjust size as needed */
+  color: #ffffff; /* Logo color */
 }
 
 nav.active {
@@ -97,104 +84,14 @@ nav.active {
 
 nav ul {
   display: flex;
-  margin: 0;
-  padding: 0;
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
 }
 
 nav ul li {
-  list-style: none;
+  list-style: none; /* Remove default list style */
 }
 
-nav ul li a {
-  font-family: 'Lato';
-  height: 40px;
-  line-height: 43px;
-  margin: 3px;
-  padding: 0 22px;
-  display: flex;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: #ffffff;
-  letter-spacing: 1px;
-  border-radius: 3px;
-  transition: 0.2s ease-in-out;
-}
-
-nav ul li a:hover {
-  background-color: #FF1414;
-  color: #ffffff;
-  box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
-  transition: all ease 0.2s;
-}
-
-/* Mobile Menu Styles */
-.menu-btn {
-  display: none;
-}
-
-.menu-icon {
-  display: none;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 30px;
-  width: 30px;
-}
-
-.nav-icon {
-  background-color: white;
-  height: 3px;
-  width: 25px;
-}
-
-/* Mobile Responsiveness */
-@media screen and (max-width: 768px) {
-  nav {
-    justify-content: space-between;
-  }
-
-  /* Hamburger Icon (Mobile) */
-  .menu-btn {
-    display: block;
-  }
-
-  .menu-icon {
-    display: flex;
-  }
-
-  /* Hide menu items by default */
-  nav ul {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    background-color: #333;
-    padding-top: 10px;
-  }
-
-  /* Show menu when checkbox is checked */
-  nav ul.active {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 15px 0;
-  }
-
-  /* Menu Link Styles for Mobile */
-  nav ul li a {
-    font-size: 1rem;
-    padding: 15px 0;
-  }
-}
-
-
-/* Active state for menu links */
 .active {
   background-color: #FF1414;
   color: #ffffff;
@@ -209,6 +106,33 @@ nav ul li a:hover {
   transition: all ease 0.2s;
 }
 
+nav ul li a {
+  font-family: 'Lato';
+  height: 40px;
+  line-height: 43px;
+  margin: 3px;
+  padding: 0 22px;
+  display: flex;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #ffffff; /* Default text color */
+  letter-spacing: 1px;
+  border-radius: 3px;
+  transition: 0.2s ease-in-out;
+}
+
+nav ul li a:hover {
+  background-color: #FF1414; /* Red background */
+  color: #ffffff; /* Keep text color white */
+  box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.336);
+  transition: all ease 0.2s;
+}
+
+nav .menu-btn,
+.menu-icon {
+  display: none;
+}
 
 .name {
   text-align: center;

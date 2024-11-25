@@ -1,22 +1,45 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.contrib.auth.hashers import make_password
 
 class PostSignup(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
     mobile = models.CharField(max_length=15)
     gender = models.CharField(max_length=10, choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')])
     dob = models.DateField(default='2000-01-01')  # Set a default date
+    password = models.CharField(max_length=255, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        # If password is provided, hash it
+        if self.password:
+            self.password = make_password(self.password)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.user.username
     
+# class PostLogin(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     login_time = models.DateTimeField(auto_now_add=True)
+#     ip_address = models.GenericIPAddressField(null=True, blank=True)
+#     success = models.BooleanField(default=False)
+
+
 class PostLogin(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     login_time = models.DateTimeField(auto_now_add=True)
     ip_address = models.GenericIPAddressField(null=True, blank=True)
     success = models.BooleanField(default=False)
+    # If you absolutely must store a password, hash it before saving (not recommended)
+    password = models.CharField(max_length=255, blank=True, null=True)
+
+    # def save(self, *args, **kwargs):
+    #     # If password is provided, hash it
+    #     if self.password:
+    #         self.password = make_password(self.password)
+    #     super().save(*args, **kwargs)
+
 
     def __str__(self):
         return f"{self.user.username} - {self.login_time} - {'Success' if self.success else 'Failed'}"

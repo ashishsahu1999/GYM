@@ -3,7 +3,7 @@ from rest_framework import serializers,viewsets
 from django.contrib.auth.models import User
 from .models import (PostSignup, Enquiry, Plan, Equipment, Members, PasswordRecoveryRequest)
 from datetime import date
-
+from django.contrib.auth import authenticate
 
 class UserSignupSerializer(serializers.ModelSerializer):
     mobile = serializers.CharField(max_length=15)
@@ -35,6 +35,20 @@ class UserSignupSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
+
+    def validate(self, attrs):
+        username = attrs.get('username')
+        password = attrs.get('password')
+
+        # Authenticate the user using Django's built-in authenticate method
+        user = authenticate(username=username, password=password)
+
+        if user is None:
+            raise serializers.ValidationError("Invalid username or password.")
+
+        # If authentication is successful, return the user object
+        attrs['user'] = user
+        return attrs
 
 # PasswordRecoveryRequestSerializer
 class PasswordRecoveryRequestSerializer(serializers.ModelSerializer):

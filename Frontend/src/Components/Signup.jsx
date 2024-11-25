@@ -121,6 +121,84 @@ const Signup = () => {
           .link-separator {
             margin: 0 60px;
           }
+
+          /* Mobile responsiveness */
+          @media screen and (max-width: 768px) {
+            .signup-container {
+              margin-top: 100px; /* Adjust margin for smaller screens */
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"],
+            .form-group input[type="password"],
+            .form-group input[type="date"],
+            .form-group select {
+              font-size: 14px; /* Adjust font size for smaller devices */
+            }
+
+            .password-row {
+              flex-direction: column;
+              gap: 10px;
+            }
+
+            .form-group button {
+              font-size: 14px; /* Reduce button font size */
+              padding: 10px; /* Reduce button padding */
+            }
+
+            .form-group .alternate-text {
+              font-size: 13px; /* Adjust font size for the alternate text */
+            }
+
+            /* Ensure links in alternate-text are stacked vertically */
+            .form-group .alternate-text {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              text-align: center;
+            }
+
+            .link-separator {
+              display: none; /* Remove separator on smaller screens */
+            }
+          }
+
+          /* Very small devices (mobile) */
+          @media screen and (max-width: 480px) {
+            .signup-container {
+              margin-top: 80px; /* Further reduce the margin */
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"],
+            .form-group input[type="password"],
+            .form-group input[type="date"],
+            .form-group select {
+              font-size: 12px; /* Smaller font size for inputs */
+            }
+
+            .password-row {
+              flex-direction: column;
+              gap: 10px;
+            }
+
+            .form-group button {
+              font-size: 14px;
+              padding: 10px;
+            }
+
+            .form-group .alternate-text {
+              font-size: 12px;
+            }
+
+            /* Ensure that links in alternate-text are spaced and appear one after another */
+            .form-group .alternate-text a {
+              display: block;
+              margin: 5px 0;
+            }
+          }
         `}
       </style>
 

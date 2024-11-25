@@ -1,3 +1,4 @@
+/* Footer Basic Styles */
 .footer {
   background-color: #000000; /* Matches body background color */
   color: #ffffff; /* White text color */
@@ -20,7 +21,7 @@
   color: #FF1414; /* Red color for the logo text to match the design scheme */
 }
 
-.footer-section h1, 
+.footer-section h1,
 .footer-section h2 {
   color: #FF1414; /* Red color for headings */
 }
@@ -35,7 +36,7 @@
   box-sizing: border-box; /* Ensure padding is included in the element’s total width and height */
 }
 
-.footer-section h1, 
+.footer-section h1,
 .footer-section h2 {
   margin-bottom: 15px;
   font-size: 1.5em; /* Adjusted font size for headers */
@@ -94,4 +95,82 @@
   margin-top: 20px;
   font-size: 0.9em; /* Adjusted font size for footer bottom text */
   color: #ffffff; /* White color for footer bottom text */
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  /* Adjust footer padding for smaller screens */
+  .footer {
+    padding: 100px 20px; /* Reduce padding */
+  }
+
+  .footer-content {
+    flex-direction: column; /* Stack the sections vertically */
+    text-align: center;
+  }
+
+  .footer-section {
+    width: 100%; /* Ensure each section takes full width */
+    padding: 20px;
+  }
+
+  .footer-section h1, 
+  .footer-section h2 {
+    font-size: 1.3em; /* Smaller heading size for mobile */
+  }
+
+  .footer-section p {
+    font-size: 0.9em; /* Adjust paragraph font size */
+  }
+
+  /* Social media icons */
+  .footer-section .social-icons {
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  /* Links Styling */
+  .footer-section ul {
+    padding: 0;
+    text-align: center;
+  }
+
+  .footer-section ul li {
+    margin: 10px 0;
+  }
+
+  .footer-bottom {
+    margin-top: 20px;
+    font-size: 0.8em; /* Adjust font size for footer bottom */
+  }
+
+  /* Social media icons resizing */
+  .footer-section .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Very Small Devices (Mobile) */
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 80px 10px; /* Further reduce padding */
+  }
+
+  .footer-content {
+    padding: 0 10px; /* Add some padding on smaller devices */
+  }
+
+  .footer-section h1,
+  .footer-section h2 {
+    font-size: 1.1em; /* Smaller font size for headings */
+  }
+
+  .footer-section ul li {
+    margin: 8px 0; /* Reduce margin for list items */
+  }
+
+  .footer-bottom {
+    font-size: 0.7em; /* Further reduce footer bottom font size */
+  }
 }
