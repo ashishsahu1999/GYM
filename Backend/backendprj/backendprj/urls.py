@@ -36,7 +36,8 @@ from backendapp.views import (
     AddMembersView,
     MembersListView,
     EditMembersView,
-    DeleteMembersView
+    DeleteMembersView,
+    CountView
 )
 
 urlpatterns = [
@@ -68,4 +69,8 @@ urlpatterns = [
     path('api/members/', MembersListView.as_view(), name='members-list'),
     path('api/members/<int:id>', EditMembersView.as_view(), name='edit-members'),
     path('api/members/<int:id>/delete/', DeleteMembersView.as_view(), name='delete-members'),
+
+    #View Count
+    path('api/viewcount/', CountView.as_view(), name='add_members'),
+
 ]

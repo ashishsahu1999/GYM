@@ -21,34 +21,26 @@ function Dashboard() {
       setLoading(true); // Start loading
       try {
         // Replace this URL with your actual API endpoint
-        const response = await fetch('https://your-api-endpoint.com/get-dashboard-data'); 
-        const result = await response.json(); 
+        const response = await fetch('http://127.0.0.1:8000/api/viewcount/');
+        console.log(response, "response");
 
-        // Update the data state with the fetched values
-        if (result) {
+        // Check if the response is successful (status 200)
+        if (response.ok) {
+          const result = await response.json(); 
+          
+          // Access data from the nested "data" key
           setData({
-            enquiry: result.enquiry || 0,
-            plan: result.plan || 0,
-            member: result.member || 0,
-            equipment: result.equipment || 0,
+            enquiry: result.data.enquirycont || 0,
+            plan: result.data.plancont || 0,
+            member: result.data.membercont || 0,
+            equipment: result.data.equipmentcount || 0,
           });
         } else {
-          setData({
-            enquiry: 0,
-            plan: 0,
-            member: 0,
-            equipment: 0,
-          });
+          console.error('Failed to fetch data');
         }
       } catch (error) {
         // Handle error (if the API fails)
         console.error('Error fetching data:', error);
-        setData({
-          enquiry: 0,
-          plan: 0,
-          member: 0,
-          equipment: 0,
-        });
       } finally {
         setLoading(false); // Stop loading
       }
@@ -101,16 +93,24 @@ function Dashboard() {
       ) : (
         <div className="dashboard">
           <div className="card" onClick={() => handleCardClick('enquiry')}>
-            <div className="card-title">Total Enquiry</div> {/* Removed the number */}
+            <div className="card-title">
+              Total Enquiry: {data.enquiry}
+            </div>
           </div>
           <div className="card" onClick={() => handleCardClick('plan')}>
-            <div className="card-title">Total Plan</div> {/* Removed the number */}
+            <div className="card-title">
+              Total Plan: {data.plan}
+            </div>
           </div>
           <div className="card" onClick={() => handleCardClick('member')}>
-            <div className="card-title">Total Member</div> {/* Removed the number */}
+            <div className="card-title">
+              Total Member: {data.member}
+            </div>
           </div>
           <div className="card" onClick={() => handleCardClick('equipment')}>
-            <div className="card-title">Total Equipment</div> {/* Removed the number */}
+            <div className="card-title">
+              Total Equipment: {data.equipment}
+            </div>
           </div>
         </div>
       )}
@@ -135,7 +135,3 @@ function Footer() {
 }
 
 export default Dashboard;
-
-
-
-

@@ -319,3 +319,20 @@ class DeleteMembersView(APIView):
 
         plan.delete()
         return Response({'msg': 'Members deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+    
+class CountView(APIView):
+    def get(self, request):
+        membercont = Members.objects.all().count()
+        equipmentcount = Equipment.objects.all().count()
+        enquirycont = Enquiry.objects.all().count()
+        plancont = Plan.objects.all().count()
+
+        # Return the data in the correct format with status 200
+        return Response({
+            'data': {
+                'membercont': membercont,
+                'equipmentcount': equipmentcount,
+                'enquirycont': enquirycont,
+                'plancont': plancont,
+            }
+        }, status=status.HTTP_200_OK)  # Use 200 status for successful responses
