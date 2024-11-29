@@ -131,12 +131,15 @@ function Dashboard() {
 function Footer() {
   return (
     <footer>
-      <span>Copyright © 2024 All Right Reserved |</span> 
-      <span className="creator">This website is made by  <br /><span className="heart">❤️ </span><span className="glow"> Ashish Sahu</span></span>
+      <span>Copyright © 2024 All Right Reserved |</span>
+      <span className="creator">
+        This website is made by <br />
+        <span className="heart">❤️ </span>
+        <span className="glow"> Ashish Sahu</span>
+      </span>
     </footer>
   );
 }
-
 
 const styles = `
   body {
@@ -209,7 +212,7 @@ const styles = `
     font-size: 24px; /* Adjusted size */
     text-align: center;
     font-family: Arial, sans-serif;
-    margin-top: 300px; /* Ensure footer is at the bottom of the page */
+    margin-top: 400px; /* Ensure footer is at the bottom of the page */
   }
 
   footer span {
@@ -238,19 +241,19 @@ const styles = `
 
   @-webkit-keyframes glow {
     0% {
-      text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 40px #ffcc00, 0 0 80px #ffcc00;
+      text-shadow: 0 0 5px #42a5f5, 0 0 10px #42a5f5, 0 0 20px #42a5f5, 0 0 40px #42a5f5, 0 0 80px #42a5f5;
     }
     100% {
-      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 60px #ffcc00, 0 0 100px #ffcc00;
+      text-shadow: 0 0 10px #42a5f5, 0 0 20px #42a5f5, 0 0 30px #42a5f5, 0 0 60px #42a5f5, 0 0 100px #42a5f5;
     }
   }
 
   @keyframes glow {
     0% {
-      text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 40px #ffcc00, 0 0 80px #ffcc00;
+      text-shadow: 0 0 5px #42a5f5, 0 0 10px #42a5f5, 0 0 20px #42a5f5, 0 0 40px #42a5f5, 0 0 80px #42a5f5;
     }
     100% {
-      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 60px #ffcc00, 0 0 100px #ffcc00;
+      text-shadow: 0 0 10px #42a5f5, 0 0 20px #42a5f5, 0 0 30px #42a5f5, 0 0 60px #42a5f5, 0 0 100px #42a5f5;
     }
   }
 
