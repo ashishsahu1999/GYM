@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import './Dashboard.css';
-import ViewEnquiry from './ViewEnquiry';  
-import ViewPlan from './ViewPlan';  
-import ViewMember from './ViewMember'; 
-import ViewEquipment from './ViewEquipment'; 
+import React, { useState, useEffect } from "react";
+
+// Placeholder Components for the View Pages
+function ViewEnquiry() {
+  return <div>Enquiry Details</div>;
+}
+function ViewPlan() {
+  return <div>Plan Details</div>;
+}
+function ViewMember() {
+  return <div>Member Details</div>;
+}
+function ViewEquipment() {
+  return <div>Equipment Details</div>;
+}
 
 function Dashboard() {
-  const [selectedComponent, setSelectedComponent] = useState(null); // Track selected component
-  const [loading, setLoading] = useState(true); // To handle loading state
+  const [selectedComponent, setSelectedComponent] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
     enquiry: 0,
     plan: 0,
@@ -15,20 +24,14 @@ function Dashboard() {
     equipment: 0,
   });
 
-  // Fetch data from your API (Only once when the component mounts)
+  // Fetch data when the component mounts
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Start loading
+      setLoading(true);
       try {
-        // Replace this URL with your actual API endpoint
-        const response = await fetch('http://127.0.0.1:8000/api/viewcount/');
-        console.log(response, "response");
-
-        // Check if the response is successful (status 200)
+        const response = await fetch("http://127.0.0.1:8000/api/viewcount/");
         if (response.ok) {
-          const result = await response.json(); 
-          
-          // Access data from the nested "data" key
+          const result = await response.json();
           setData({
             enquiry: result.data.enquirycont || 0,
             plan: result.data.plancont || 0,
@@ -36,50 +39,32 @@ function Dashboard() {
             equipment: result.data.equipmentcount || 0,
           });
         } else {
-          console.error('Failed to fetch data');
+          console.error("Failed to fetch data");
         }
       } catch (error) {
-        // Handle error (if the API fails)
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false);
       }
     };
+    fetchData();
+  }, []);
 
-    fetchData(); // Fetch data only once when the component mounts
-  }, []); // Empty dependency array ensures it runs only once
-
-  // Function to handle card click
+  // Handle card clicks
   const handleCardClick = (type) => {
-    switch (type) {
-      case 'enquiry':
-        setSelectedComponent('enquiry');
-        break;
-      case 'plan':
-        setSelectedComponent('plan');
-        break;
-      case 'member':
-        setSelectedComponent('member');
-        break;
-      case 'equipment':
-        setSelectedComponent('equipment');
-        break;
-      default:
-        setSelectedComponent(null);
-        break;
-    }
+    setSelectedComponent(type);
   };
 
-  // Render the selected component based on state
+  // Render the selected component
   const renderSelectedComponent = () => {
     switch (selectedComponent) {
-      case 'enquiry':
+      case "enquiry":
         return <ViewEnquiry />;
-      case 'plan':
+      case "plan":
         return <ViewPlan />;
-      case 'member':
+      case "member":
         return <ViewMember />;
-      case 'equipment':
+      case "equipment":
         return <ViewEquipment />;
       default:
         return null;
@@ -89,38 +74,56 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       {loading ? (
-        <div className="loading-message">Loading...</div> // Show loading message while data is being fetched
+        <div className="loading-message">Loading...</div>
       ) : (
-        <div className="dashboard">
-          <div className="card" onClick={() => handleCardClick('enquiry')}>
-            <div className="card-title">
-              Total Enquiry: {data.enquiry}
+        <>
+          {/* Dashboard Cards */}
+          <div className="dashboard">
+            <div
+              className="card"
+              style={{ background: "linear-gradient(90deg, #d291ff, #42a5f5)" }}
+              onClick={() => handleCardClick("enquiry")}
+            >
+              <div className="card-number">{data.enquiry}</div>
+              <i className="card-icon">📩</i>
+              <div className="card-title">Total Enquiry</div>
+            </div>
+            <div
+              className="card"
+              style={{ background: "linear-gradient(90deg, #d291ff, #9c27b0)" }}
+              onClick={() => handleCardClick("plan")}
+            >
+              <div className="card-number">{data.plan}</div>
+              <i className="card-icon">📝</i>
+              <div className="card-title">Total Plan</div>
+            </div>
+            <div
+              className="card"
+              style={{ background: "linear-gradient(90deg, #42a5f5, #007bff)" }}
+              onClick={() => handleCardClick("member")}
+            >
+              <div className="card-number">{data.member}</div>
+              <i className="card-icon">👤</i>
+              <div className="card-title">Total Member</div>
+            </div>
+            <div
+              className="card"
+              style={{ background: "linear-gradient(90deg, #42a5f5, #00c3ff)" }}
+              onClick={() => handleCardClick("equipment")}
+            >
+              <div className="card-number">{data.equipment}</div>
+              <i className="card-icon">⚙️</i>
+              <div className="card-title">Total Equipment</div>
             </div>
           </div>
-          <div className="card" onClick={() => handleCardClick('plan')}>
-            <div className="card-title">
-              Total Plan: {data.plan}
-            </div>
-          </div>
-          <div className="card" onClick={() => handleCardClick('member')}>
-            <div className="card-title">
-              Total Member: {data.member}
-            </div>
-          </div>
-          <div className="card" onClick={() => handleCardClick('equipment')}>
-            <div className="card-title">
-              Total Equipment: {data.equipment}
-            </div>
-          </div>
-        </div>
+
+          {/* Selected Component */}
+          <div className="selected-component">{renderSelectedComponent()}</div>
+
+          {/* Footer */}
+          <Footer />
+        </>
       )}
-
-      {/* Render the selected component */}
-      <div className="selected-component">
-        {renderSelectedComponent()}
-      </div>
-
-      <Footer />
     </div>
   );
 }
@@ -129,9 +132,138 @@ function Footer() {
   return (
     <footer>
       <span>Copyright © 2024 All Right Reserved |</span> 
-      <span className="creator">This website is made with <span className="heart">💛</span> by Ashish Sahu</span>
+      <span className="creator">This website is made by  <br /><span className="heart">❤️ </span><span className="glow"> Ashish Sahu</span></span>
     </footer>
   );
 }
+
+
+const styles = `
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* White background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least full viewport height */
+  }
+
+  .dashboard-container {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1; /* Allow this section to grow and take available space */
+  }
+
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .card {
+    width: 220px;
+    height: 120px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ffffff;
+    color: #000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .card-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-weight: bold;
+  }
+
+  footer {
+    font-size: 24px; /* Adjusted size */
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 300px; /* Ensure footer is at the bottom of the page */
+  }
+
+  footer span {
+    font-weight: bold;
+    color: red;
+  }
+
+  footer .creator {
+    color: #008000;
+    font-size: 24px; /* Adjusted size */
+  }
+
+  footer .heart {
+    color: #ffcc00;
+    font-size: 20px;
+  }
+
+  .glow {
+    font-size: 40px; /* Adjusted size for better view */
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes glow {
+    0% {
+      text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 40px #ffcc00, 0 0 80px #ffcc00;
+    }
+    100% {
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 60px #ffcc00, 0 0 100px #ffcc00;
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 40px #ffcc00, 0 0 80px #ffcc00;
+    }
+    100% {
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 60px #ffcc00, 0 0 100px #ffcc00;
+    }
+  }
+
+  .loading-message {
+    text-align: center;
+    font-size: 24px;
+  }
+`;
+
+// Inject styles into the document
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
 
 export default Dashboard;
