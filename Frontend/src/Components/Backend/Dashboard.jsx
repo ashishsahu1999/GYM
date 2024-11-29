@@ -94,7 +94,7 @@ function Dashboard() {
               onClick={() => handleCardClick("plan")}
             >
               <div className="card-number">{data.plan}</div>
-              <i className="card-icon">📝</i>
+              <i className="card-icon">₹</i> {/* Updated Plan icon to Rupee */}
               <div className="card-title">Total Plan</div>
             </div>
             <div
@@ -112,7 +112,7 @@ function Dashboard() {
               onClick={() => handleCardClick("equipment")}
             >
               <div className="card-number">{data.equipment}</div>
-              <i className="card-icon">⚙️</i>
+              <i className="card-icon">🏋️‍♂️</i> {/* Updated Equipment icon to Dumbbell */}
               <div className="card-title">Total Equipment</div>
             </div>
           </div>
