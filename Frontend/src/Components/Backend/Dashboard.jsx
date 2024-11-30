@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-// Placeholder Components for the View Pages
-function ViewEnquiry() {
-  return <div>Enquiry Details</div>;
-}
-function ViewPlan() {
-  return <div>Plan Details</div>;
-}
-function ViewMember() {
-  return <div>Member Details</div>;
-}
-function ViewEquipment() {
-  return <div>Equipment Details</div>;
-}
+// Importing Components from other files
+import ViewEnquiry from '../Backend/ViewEnquiry';  // Adjust path as needed
+import ViewPlan from './ViewPlan';  // Adjust path as needed
+import ViewMember from './ViewMember';  // Adjust path as needed
+import ViewEquipment from './ViewEquipment';  // Adjust path as needed
 
 function Dashboard() {
   const [selectedComponent, setSelectedComponent] = useState(null);
@@ -55,7 +47,7 @@ function Dashboard() {
     setSelectedComponent(type);
   };
 
-  // Render the selected component
+  // Render the selected component based on card click
   const renderSelectedComponent = () => {
     switch (selectedComponent) {
       case "enquiry":
@@ -112,7 +104,7 @@ function Dashboard() {
               onClick={() => handleCardClick("equipment")}
             >
               <div className="card-number">{data.equipment}</div>
-              <i className="card-icon">🏋️‍♂️</i> {/* Updated Equipment icon to Dumbbell */}
+              <i className="card-icon">🏋‍♂</i> {/* Updated Equipment icon to Dumbbell */}
               <div className="card-title">Total Equipment</div>
             </div>
           </div>
@@ -134,7 +126,7 @@ function Footer() {
       <span>Copyright © 2024 All Right Reserved |</span>
       <span className="creator">
         This website is made by <br />
-        <span className="heart">❤️ </span>
+        <span className="heart">❤ </span>
         <span className="glow"> Ashish Sahu</span>
       </span>
     </footer>
@@ -144,18 +136,18 @@ function Footer() {
 const styles = `
   body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff; /* White background */
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure the body takes at least full viewport height */
+    min-height: 100vh;
   }
 
   .dashboard-container {
     padding: 20px;
     text-align: center;
-    flex-grow: 1; /* Allow this section to grow and take available space */
+    flex-grow: 1;
   }
 
   .dashboard {
@@ -209,10 +201,9 @@ const styles = `
   }
 
   footer {
-    font-size: 24px; /* Adjusted size */
+    font-size: 24px;
     text-align: center;
-    font-family: Arial, sans-serif;
-    margin-top: 400px; /* Ensure footer is at the bottom of the page */
+    margin-top: 400px;
   }
 
   footer span {
@@ -222,7 +213,7 @@ const styles = `
 
   footer .creator {
     color: #008000;
-    font-size: 24px; /* Adjusted size */
+    font-size: 24px;
   }
 
   footer .heart {
@@ -231,7 +222,7 @@ const styles = `
   }
 
   .glow {
-    font-size: 40px; /* Adjusted size for better view */
+    font-size: 40px;
     color: #fff;
     text-align: center;
     font-weight: bold;
