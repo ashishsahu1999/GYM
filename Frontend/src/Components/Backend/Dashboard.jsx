@@ -104,7 +104,7 @@ function Dashboard() {
               onClick={() => handleCardClick("equipment")}
             >
               <div className="card-number">{data.equipment}</div>
-              <i className="card-icon">🏋‍♂</i> {/* Updated Equipment icon to Dumbbell */}
+              <i className="card-icon">🏋‍♂</i>
               <div className="card-title">Total Equipment</div>
             </div>
           </div>
