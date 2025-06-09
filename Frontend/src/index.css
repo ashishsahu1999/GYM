@@ -496,25 +496,27 @@ nav ul li a:hover {
 
 #contact {
   max-width: 500px;
-  margin: 50px auto;
-  margin-top: 150px; 
+  margin: 150px auto 50px auto;  /* Top margin adjusted, rest centered */
   background: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Heading inside the contact form */
 #contact h1 {
   text-align: center;
-  margin-bottom: 30px; /* Adjust margin as needed */
+  margin-bottom: 30px;
   color: #333;
 }
 
+/* Form structure */
 #contact form {
   display: flex;
   flex-direction: column;
 }
 
+/* Input and textarea styling */
 #contact input,
 #contact textarea {
   width: 100%;
@@ -522,9 +524,10 @@ nav ul li a:hover {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 20px; /* Space between inputs */
+  margin-bottom: 20px;
 }
 
+/* Focus styles */
 #contact input:focus,
 #contact textarea:focus {
   outline: none;
@@ -532,13 +535,16 @@ nav ul li a:hover {
   box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
+/* Submit button */
 #contact input[type="submit"] {
   background: linear-gradient(90deg, #FF1414 20%, #f70000);
   color: #fff;
   cursor: pointer;
   transition: background 0.3s ease;
+  border: none;
 }
 
+/* Submit button hover effect */
 #contact input[type="submit"]:hover {
   background: linear-gradient(90deg, #f70000 20%, #FF1414);
 }
