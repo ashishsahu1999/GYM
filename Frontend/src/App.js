@@ -30,7 +30,6 @@ const App = () => {
           <Route path="/sidebar" element={<Sidebar />} />
         </Routes>
       </div>
-      {showNavbarAndFooter && <Footer />}
     </>
   );
 };

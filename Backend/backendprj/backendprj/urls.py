@@ -18,9 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from backendapp.views import (
-    PostSignupView,
-    PostLoginView,
-    PasswordRecoveryView,
+    LoginView,
     AddEnquiryView,
     EnquiryListView,
     EditEnquiryView,
@@ -42,9 +40,8 @@ from backendapp.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/signup/', PostSignupView.as_view(), name='signup'),
-    path('api/login/', PostLoginView.as_view(), name='login'),
-    path('api/password-recovery/', PasswordRecoveryView.as_view(), name='password_recovery'),
+
+    path('api/login/', LoginView.as_view(), name='login'),
 
     #enquiries
     path('api/enquiries/add/', AddEnquiryView.as_view(), name='add_enquiry'),

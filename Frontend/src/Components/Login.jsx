@@ -29,8 +29,8 @@ const Login = () => {
       );
 
       if (response.status === 200) {
-        // Store the token in localStorage after successful login
-        localStorage.setItem('token', response.data.token);
+        // Store the access token in localStorage after successful login
+        localStorage.setItem('token', response.data.access);
         alert('Login successful!');
         navigate('/sidebar'); // Redirect to sidebar or any protected route after login
       }
