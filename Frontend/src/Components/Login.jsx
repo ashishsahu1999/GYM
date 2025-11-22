@@ -127,8 +127,6 @@ const Login = () => {
             </div>
           </form>
           <div className="form-group alternate-text">
-            Forgotten Password? <Link to="/password-recovery">Recover Your Password</Link><br /><br />
-            Don't have an account? <Link to="/signup">Sign up</Link><br /><br />
             <Link to="/">Back To Home</Link>
           </div>
         </div>

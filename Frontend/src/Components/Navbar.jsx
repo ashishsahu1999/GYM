@@ -43,7 +43,6 @@ function Navbar() {
         <li><Link to='/offer' onClick={closeMenu}>Offer</Link></li>
         <li><Link to='/contact' onClick={closeMenu}>Contact</Link></li>
         <li><Link to='/login' onClick={closeMenu}>LOG IN</Link></li>
-        <li><Link to='/signup' onClick={closeMenu}>SIGN UP</Link></li>
       </ul>
     </nav>
   );

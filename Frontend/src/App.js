@@ -6,8 +6,6 @@ import Feature from './Components/Feature';
 import Offer from './Components/Offer';
 import Contact from './Components/Contact';
 import Login from './Components/Login';
-import Signup from './Components/Signup';
-import PasswordRecovery from './Components/PasswordRecovery';
 import Footer from './Components/Footer';
 import Sidebar from './Components/Backend/Sidebar';
 
@@ -29,8 +27,6 @@ const App = () => {
           <Route path="/offer" element={<Offer />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/password-recovery" element={<PasswordRecovery />} />
           <Route path="/sidebar" element={<Sidebar />} />
         </Routes>
       </div>
